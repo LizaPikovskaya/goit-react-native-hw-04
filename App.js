@@ -31,11 +31,7 @@ export default function App() {
           name="Home"
           component={Home}
           options={{
-            title: "Домашня сторінка",
-            headerRight: () => <HeaderLogoutButton />,
-            headerStyle: {
-              borderBottomWidth: 1,
-            },
+            headerShown: false,
           }}
         />
         {/* <MainStack.Screen

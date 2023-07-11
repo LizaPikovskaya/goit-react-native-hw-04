@@ -4,20 +4,22 @@ import { CreatePostsScreen } from "../screens/CreatePostsScreen";
 import { PostsScreen } from "../screens/PostsScreen";
 import { UserIcon, PlusIcon, GridIcon } from "./icons/Icons";
 import { StyleSheet, View } from "react-native";
-// import { useNavigation } from "@react-navigation/native";
+import { HeaderLogoutButton } from "./HeaderLogoutButton";
+import { BackButton } from "./BackButton";
+import { createStackNavigator } from "@react-navigation/stack";
+
 
 const Tab = createBottomTabNavigator();
 const TabNavigation = () => {
   return (
     <Tab.Navigator
-      // initialRouteName="Posts"
+      initialRouteName="Posts"
       screenOptions={({ route }) => ({
-        headerShown: false,
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === "Posts") {
             return (
               <View
-                style={focused ? styles.focusIconWrapper : styles.iconWrapper}
+                style={focused ? styles.focusedIconWrapper : styles.iconWrapper}
               >
                 <GridIcon stroke={focused ? "white" : "black"} />
               </View>
@@ -25,11 +27,7 @@ const TabNavigation = () => {
           } else if (route.name === "CreatePosts") {
             return (
               <View
-                style={
-                  focused
-                    ? styles.focusedPlusIconWrapper
-                    : styles.iconPlusWrapper
-                }
+                style={focused ? styles.focusedIconWrapper : styles.iconWrapper}
               >
                 <PlusIcon fill={focused ? "white" : "black"} />
               </View>
@@ -37,7 +35,7 @@ const TabNavigation = () => {
           } else if (route.name === "Profile") {
             return (
               <View
-                style={focused ? styles.focusIconWrapper : styles.iconWrapper}
+                style={focused ? styles.focusedIconWrapper : styles.iconWrapper}
               >
                 <UserIcon stroke={focused ? "white" : "black"} />
               </View>
@@ -53,10 +51,35 @@ const TabNavigation = () => {
           justifyContent: "center",
           alignItems: "center",
         },
+        headerShown: true,
+        headerStyle: {
+          borderBottomWidth: 1,
+        },
       })}
     >
-      <Tab.Screen name={"Posts"} component={PostsScreen} />
-      <Tab.Screen name={"CreatePosts"} component={CreatePostsScreen} />
+      <Tab.Screen
+        name={"Posts"}
+        component={PostsScreen}
+        options={{
+          title: "Публікації",
+          headerRight: () => <HeaderLogoutButton />,
+          headerStyle: {
+            borderBottomWidth: 1,
+          },
+        }}
+      />
+      <Tab.Screen
+        name={"CreatePosts"}
+        component={CreatePostsScreen}
+        options={{
+          title: "Створити публікацію",
+          tabBarStyle: { display: "none" },
+          headerLeft: () => <BackButton />,
+          headerStyle: {
+            borderBottomWidth: 1,
+          },
+        }}
+      />
       <Tab.Screen name={"Profile"} component={ProfileScreen} />
     </Tab.Navigator>
   );
@@ -67,30 +90,15 @@ const styles = StyleSheet.create({
   iconWrapper: {
     width: 40,
     height: 40,
-    padding: 8,
-  },
-  iconPlusWrapper: {
-    width: 40,
-    height: 40,
     justifyContent: "center",
     alignItems: "center",
   },
-  focusedPlusIconWrapper: {
+  focusedIconWrapper: {
     backgroundColor: "#FF6C00",
     width: 70,
     height: 40,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-  },
-  focusIconWrapper: {
-    backgroundColor: "#FF6C00",
-    width: 70,
-    height: 40,
-    borderRadius: 20,
-    padding: 8,
-    paddingLeft: 23,
-    paddingRight: 23,
-    backgroundColor: "#FF6C00",
   },
 });
