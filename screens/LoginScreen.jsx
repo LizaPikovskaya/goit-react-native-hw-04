@@ -40,61 +40,61 @@ export const Login = () => {
         > */}
           <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            style={{ flex: 1 }}
+            style={{ flex: 1}}
           >
             <View style={{ flex: 1, justifyContent: "flex-end" }}>
-              <View
-                style={{
-                  ...styles.formWrapper,
-                  paddingBottom: isOpenKeyboard ? 10 : 111,
-                  height: isOpenKeyboard ? 250 : "auto",
-                }}
-              >
-                <Text style={styles.title}>Увійти</Text>
+            <View
+              style={{
+                ...styles.formWrapper,
+                paddingBottom: isOpenKeyboard ? 10 : 111,
+                height: isOpenKeyboard ? 250 : "auto",
+              }}
+            >
+              <Text style={styles.title}>Увійти</Text>
+              <TextInput
+                style={[styles.commonTextParams, styles.input]}
+                placeholder="Адреса електронної пошти"
+                onFocus={() => setIsOpenKeyboard(true)}
+                onBlur={() => setIsOpenKeyboard(false)}
+                onChangeText={setEmail}
+                value={email}
+              ></TextInput>
+              <View>
                 <TextInput
                   style={[styles.commonTextParams, styles.input]}
-                  placeholder="Адреса електронної пошти"
+                  placeholder="Пароль"
+                  textContentType="password"
+                  secureTextEntry={secureTextEntry}
                   onFocus={() => setIsOpenKeyboard(true)}
                   onBlur={() => setIsOpenKeyboard(false)}
-                  onChangeText={setEmail}
-                  value={email}
-                ></TextInput>
-                <View>
-                  <TextInput
-                    style={[styles.commonTextParams, styles.input]}
-                    placeholder="Пароль"
-                    textContentType="password"
-                    secureTextEntry={secureTextEntry}
-                    onFocus={() => setIsOpenKeyboard(true)}
-                    onBlur={() => setIsOpenKeyboard(false)}
-                    onChangeText={setPassword}
-                    value={password}
-                  />
-                  <TouchableOpacity
-                    style={{ position: "absolute", top: 16, right: 16 }}
-                    onPress={togglePassword}
-                  >
-                    <Text>{secureTextEntry ? "Показати" : "Сховати"}</Text>
-                  </TouchableOpacity>
-                </View>
-                <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-                  <Text style={[styles.commonTextParams, styles.buttonText]}>
-                    Увійти
-                  </Text>
-                </TouchableOpacity>
+                  onChangeText={setPassword}
+                  value={password}
+                />
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("Registration")}
+                  style={{ position: "absolute", top: 16, right: 16 }}
+                  onPress={togglePassword}
                 >
-                  <Text
-                    style={[
-                      styles.commonTextParams,
-                      { color: "#1B4371", textAlign: "center" },
-                    ]}
-                  >
-                    Вже є акаунт? Увійти
-                  </Text>
+                  <Text>{secureTextEntry ? "Показати" : "Сховати"}</Text>
                 </TouchableOpacity>
               </View>
+              <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+                <Text style={[styles.commonTextParams, styles.buttonText]}>
+                  Увійти
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Registration")}
+              >
+                <Text
+                  style={[
+                    styles.commonTextParams,
+                    { color: "#1B4371", textAlign: "center" },
+                  ]}
+                >
+                  Вже є акаунт? Увійти
+                </Text>
+              </TouchableOpacity>
+            </View>
             </View>
           </KeyboardAvoidingView>
         </BackgroundComponent>

@@ -1,18 +1,13 @@
 import { TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import * as React from "react";
+import { LogoutIcon } from "./icons/Icons";
+
 
 export const HeaderLogoutButton = () => {
-    const handleLogOut = () => {
-
-    }
-    return (
-      <TouchableOpacity onPress={handleLogOut}>
-        <Icon
-          name="logout"
-          size={24}
-          color="grey"
-          style={{ marginRight: 20 }}
-        />
-      </TouchableOpacity>
-    );
-}
+  const handleLogOut = () => {};
+  return (
+    <TouchableOpacity onPress={handleLogOut}>
+      <LogoutIcon style={{ marginRight: 20 }} />
+    </TouchableOpacity>
+  );
+};

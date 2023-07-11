@@ -1,5 +1,6 @@
-import { Text } from "react-native";
+import TabNavigation from "../components/TabNavigation";
+
 
 export const Home = () => {
-    return ( <Text>This is Homepage!!!!!</Text> );
-}
+  return <TabNavigation />;
+};

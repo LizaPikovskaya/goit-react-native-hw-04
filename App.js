@@ -9,6 +9,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Home } from "./screens/HomeScreen";
 import { HeaderLogoutButton } from "./components/HeaderLogoutButton";
+import { CreatePostsScreen } from "./screens/CreatePostsScreen";
+import TabNavigation from "./components/TabNavigation";
+import { BackButton } from "./components/BackButton";
+import { PostsScreen } from "./screens/PostsScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -27,13 +31,35 @@ export default function App() {
           name="Home"
           component={Home}
           options={{
+            title: "Домашня сторінка",
+            headerRight: () => <HeaderLogoutButton />,
+            headerStyle: {
+              borderBottomWidth: 1,
+            },
+          }}
+        />
+        {/* <MainStack.Screen
+          name="Posts"
+          component={PostsScreen}
+          options={{
             title: "Публікації",
             headerRight: () => <HeaderLogoutButton />,
             headerStyle: {
-              borderBottomWidth: 1
-            }
+              borderBottomWidth: 1,
+            },
           }}
-        />
+        /> */}
+        {/* <MainStack.Screen
+          name="CreatePost"
+          component={CreatePostsScreen}
+          options={{
+            title: "Створити публікацію",
+            headerLeft: () => <BackButton />,
+            headerStyle: {
+              borderBottomWidth: 1,
+            },
+          }}
+        /> */}
         <MainStack.Screen
           name="Registration"
           component={Registration}
@@ -48,19 +74,6 @@ export default function App() {
             headerShown: false,
           }}
         />
-        {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <ImageBackground
-            source={require("./assets/images/Photo-BG.jpg")}
-            resizeMode="cover"
-            style={styles.image}
-          >
-            <Registration />
-            <Login />
-          </ImageBackground>
-          <StatusBar style="auto" />
-        </View>
-      </TouchableWithoutFeedback> */}
       </MainStack.Navigator>
     </NavigationContainer>
   );
