@@ -14,6 +14,7 @@ import { TouchableWithoutFeedback } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 import { BackgroundComponent } from "../components/BackgroundComponent";
+import { PlusIcon } from "../components/icons/Icons";
 
 export const Registration = () => {
   const navigation = useNavigation();
@@ -48,7 +49,7 @@ export const Registration = () => {
               >
                 <View style={styles.photoWrapper}>
                   <TouchableOpacity style={styles.addPhotoButton}>
-                    <Text style={{ color: "#FF6C00" }}>+</Text>
+                    <PlusIcon fill={"#FF6C00"} />
                   </TouchableOpacity>
                 </View>
                 <Text style={styles.title}>Реєстрація</Text>
