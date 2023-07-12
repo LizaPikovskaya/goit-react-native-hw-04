@@ -27,7 +27,7 @@ export default function App() {
   const MainStack = createStackNavigator();
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="Posts">
+      <MainStack.Navigator initialRouteName="Home">
         <MainStack.Screen
           name="Home"
           component={Home}
@@ -35,28 +35,6 @@ export default function App() {
             headerShown: false,
           }}
         />
-        {/* <MainStack.Screen
-          name="Posts"
-          component={PostsScreen}
-          options={{
-            title: "Публікації",
-            headerRight: () => <HeaderLogoutButton />,
-            headerStyle: {
-              borderBottomWidth: 1,
-            },
-          }}
-        /> */}
-        {/* <MainStack.Screen
-          name="CreatePost"
-          component={CreatePostsScreen}
-          options={{
-            title: "Створити публікацію",
-            headerLeft: () => <BackButton />,
-            headerStyle: {
-              borderBottomWidth: 1,
-            },
-          }}
-        /> */}
         <MainStack.Screen
           name="Registration"
           component={Registration}

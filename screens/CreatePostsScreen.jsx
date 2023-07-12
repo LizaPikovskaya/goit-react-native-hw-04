@@ -13,8 +13,11 @@ import { Text } from "react-native";
 import { globalStyles } from "../globalStyles";
 import { Image } from "react-native";
 import { Camera, Location, Trash } from "../components/icons/Icons";
+import { useState } from "react";
 
 export const CreatePostsScreen = () => {
+  const [isOpenKeyboard, setIsOpenKeyboard] = useState(false);
+
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
@@ -27,8 +30,8 @@ export const CreatePostsScreen = () => {
           style={[
             globalStyles.container,
             {
-              justifyContent: "space-between",
-              paddingBottom: 34,
+              justifyContent: "flex-end",
+              paddingBottom: isOpenKeyboard? 55: 34,
               paddingLeft: 16,
               paddingRight: 16,
               paddingTop: 32,
@@ -59,6 +62,8 @@ export const CreatePostsScreen = () => {
                   { height: 50, fontFamily: "Roboto-Medium" },
                 ]}
                 placeholder="Назва..."
+                onFocus={() => setIsOpenKeyboard(true)}
+                onBlur={() => setIsOpenKeyboard(false)}
               />
 
               <View
@@ -85,6 +90,8 @@ export const CreatePostsScreen = () => {
                     },
                   ]}
                   placeholder="Місцевість..."
+                  onFocus={() => setIsOpenKeyboard(true)}
+                  onBlur={() => setIsOpenKeyboard(false)}
                 />
               </View>
             </View>
@@ -92,9 +99,12 @@ export const CreatePostsScreen = () => {
               <Text style={globalStyles.buttonText}>Опубліковати</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={{justifyContent:'flex-end'}}>
+          <View style={{ flex: 1 }} />
+          <TouchableOpacity>
             <View
               style={{
+                // position: "absolute",
+                // bottom: 0,
                 width: 70,
                 height: 40,
                 borderRadius: 20,
