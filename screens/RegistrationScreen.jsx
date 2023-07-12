@@ -13,7 +13,7 @@ import { globalStyles } from "../globalStyles";
 import { TouchableWithoutFeedback } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
-import { BackgroundComponent } from "./BackgroundComponent";
+import { BackgroundComponent } from "../components/BackgroundComponent";
 
 export const Registration = () => {
   const navigation = useNavigation();
@@ -28,6 +28,7 @@ export const Registration = () => {
   };
   const handleSubmit = (evt) => {
     console.log({ login, email, password });
+    navigation.navigate("Home");
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>

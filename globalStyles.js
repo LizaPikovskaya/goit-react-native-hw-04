@@ -3,9 +3,6 @@ import { StyleSheet } from "react-native";
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingTop: 32,
     backgroundColor: "#fff",
   },
   image: {
@@ -19,8 +16,9 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 100,
   },
   buttonText: {
-    fontFamily: 'Roboto-Regular',
+    fontFamily: "Roboto-Regular",
     color: "white",
     textAlign: "center",
   },
+
 });

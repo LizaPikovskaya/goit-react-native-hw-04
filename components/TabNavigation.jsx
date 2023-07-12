@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigation = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Posts"
+      initialRouteName="CreatePosts"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           if (route.name === "Posts") {
@@ -80,7 +80,13 @@ const TabNavigation = () => {
           },
         }}
       />
-      <Tab.Screen name={"Profile"} component={ProfileScreen} />
+      <Tab.Screen
+        name={"Profile"}
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Tab.Navigator>
   );
 };

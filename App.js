@@ -13,6 +13,7 @@ import { CreatePostsScreen } from "./screens/CreatePostsScreen";
 import TabNavigation from "./components/TabNavigation";
 import { BackButton } from "./components/BackButton";
 import { PostsScreen } from "./screens/PostsScreen";
+import { CommentsScreen } from "./screens/CommentsScreen";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,7 +27,7 @@ export default function App() {
   const MainStack = createStackNavigator();
   return (
     <NavigationContainer>
-      <MainStack.Navigator initialRouteName="Home">
+      <MainStack.Navigator initialRouteName="Posts">
         <MainStack.Screen
           name="Home"
           component={Home}
@@ -68,6 +69,18 @@ export default function App() {
           component={Login}
           options={{
             headerShown: false,
+          }}
+        />
+        <MainStack.Screen
+          name="Comments"
+          component={CommentsScreen}
+          options={{
+            title: "Коментарі",
+            headerShown: true,
+            headerLeft: () => <BackButton />,
+            headerStyle: {
+              borderBottomWidth: 1,
+            },
           }}
         />
       </MainStack.Navigator>

@@ -6,8 +6,18 @@ import { Comments, Location } from "../components/icons/Icons";
 import Post from "../components/Post";
 export const PostsScreen = () => {
   return (
-        <ScrollView style={{flex:1}}>
-    <View style={[globalStyles.container, { flexDirection: "column" }]}>
+    <ScrollView style={{ flex: 1 }}>
+      <View
+        style={[
+          globalStyles.container,
+          {
+            flexDirection: "column",
+            paddingLeft: 16,
+            paddingRight: 16,
+            paddingTop: 32,
+          },
+        ]}
+      >
         <View style={{ gap: 8, flexDirection: "row", marginBottom: 32 }}>
           <View
             style={{
@@ -63,4 +73,3 @@ export const PostsScreen = () => {
     </ScrollView>
   );
 };
-
